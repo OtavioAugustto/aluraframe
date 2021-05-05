@@ -1,3 +1,5 @@
+// Código foi inutilizado e usado apenas para praticar conceitos básicos
+
 var campos = [
     document.querySelector('#data'),
     document.querySelector('#quantidade'),
