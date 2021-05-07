@@ -6,28 +6,33 @@ class NegociacaoController {
         this._inputData = $('#data');
         this._inputQuantidade = $('#quantidade');
         this._inputValor = $('#valor');
+        this._listaNegociacoes = new ListaNegociacoes();
 
     }
 
     adiciona(event){
 
         event.preventDefault();
+        this._listaNegociacoes.adiciona(this._criaNegociacao());
+        this._limpaForm();
+    }
 
-        let data = new Date(...
-            this._inputData.value.split('-')
-            // decrementando o mês usando mod de 2.  
-            .map((item, i) => item - i % 2)//mod de 2 é 1, que indica a segunda posição do array
-            // desta forma resolvemos problema com a data de forma simples!
-        );
-
-        let negociacao = new Negociacao(
-            data,
+    _criaNegociacao(){
+        
+        return  new Negociacao(
+            DateHelper.textoParaData(this._inputData.value),
             this._inputQuantidade.value,
-            this._inputValor.value
-        );
-
-        console.log(negociacao);
+            this._inputValor.value);
 
     }
+
+    _limpaForm() {
+
+        this._inputData.value ='';
+        this._inputQuantidade.value =1;
+        this._inputValor.value = 0.0;
+        this._inputData.focus();
+    }
+
     
 }
