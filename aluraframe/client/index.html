@@ -10,7 +10,7 @@
 <body class="container">
     
     <h1 class="text-center">Negociações</h1>
-    
+    <div id="mensagemView"></div><!-- div que irá receber a Menssagem da view JS -->
     <form class="form" onsubmit="negociacaoController.adiciona(event)">
         
         <div class="form-group">
@@ -44,11 +44,15 @@
     
     <div id="negociacoesView"></div> <!-- div que irá receber a tabela da view JS -->
 
+    <!-- Importação Scripts -->
     <script src="js/app/models/Negociacao.js"></script>
     <script src="js/app/controllers/NegociacaoController.js"></script>
     <script src="js/app/helpers/DateHelper.js"></script>
     <script src="js/app/models/ListaNegociacoes.js"></script>
+    <script src="js/app/views/View.js"></script>
     <script src="js/app/views/NegociacoesView.js"></script>
+    <script src="js/app/models/Mensagem.js"></script>
+    <script src="js/app/views/MensagemView.js"></script>
     <script>
         let negociacaoController = new NegociacaoController();
     </script>

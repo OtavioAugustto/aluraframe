@@ -1,9 +1,8 @@
-class NegociaciesView{
-
-    constructor(elemento){ 
-        this._elemento = elemento; //adicionando elemento constructor
+class NegociaciesView extends View {
+    
+    constructor(elemento){
+        super(elemento); // recebendo da classe pai
     }
-
 
     _template(model){ //função que receberá elemento html
         
@@ -42,11 +41,4 @@ class NegociaciesView{
     </table>
     `;
     }
-
-    update(model){
-        this._elemento.innerHTML = this._template(model); //inserindo tabela na div da página HTML!
-    }
 }
-
-/*
-*/
