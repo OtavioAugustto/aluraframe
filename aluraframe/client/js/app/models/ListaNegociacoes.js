@@ -1,13 +1,15 @@
 class ListaNegociacoes {
     
-    constructor() { 
+    constructor(armadilha) { // evitar que precise chamar o uptade toda hora 
 
         this._negociacoes = [];
+        this._armadilha = armadilha;
     }
 
     adiciona(negociacao) {
 
         this._negociacoes.push(negociacao);
+        this._armadilha(this);
 
     }
 
@@ -16,4 +18,12 @@ class ListaNegociacoes {
         return [].concat(this._negociacoes);
 
     }
+
+    esvazia(){
+
+        this._negociacoes = [];
+        this._armadilha(this);
+
+    }
+
 }
