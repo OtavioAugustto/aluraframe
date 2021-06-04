@@ -1,4 +1,4 @@
-class NegociaciesView extends View {
+class NegociacoesView extends View {
     
     constructor(elemento){
         super(elemento); // recebendo da classe pai

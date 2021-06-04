@@ -6,35 +6,20 @@ class NegociacaoController {
         this._inputData = $('#data');
         this._inputQuantidade = $('#quantidade');
         this._inputValor = $('#valor');
-        let self = this;
-
-          //trap
-          this._listaNegociacoes = new Proxy(new ListaNegociacoes(), {
-
-            get(target, prop, receiver) {
-
-                if(['adiciona', 'esvazia'].includes(prop) && typeof(target[prop]) == typeof(Function)) {
-
-                    return function(){
-
-                        console.log(`interceptando ${prop}`);
-                        Reflect.apply(target[prop], target, arguments);
-                        self._negocioacoesView.update(target);
-
-                    }
-                }
-                return Reflect.get(target, prop, receiver);
-            }
-        });
-
-    
-
-        this._negocioacoesView = new NegociaciesView($('#negociacoesView'));
-        this._negocioacoesView.update(this._listaNegociacoes); //carregando tabela na construção da página
         
-        this._mensagem = new Mensagem();
-        this._mensagemView = new MensagemView($('#mensagemView'));
-        this._mensagemView.update(this._mensagem);
+
+      
+        this._listaNegociacoes = new Bind(
+            new ListaNegociacoes(),
+            this._negociacoesView = new NegociacoesView($('#negociacoesView')),
+            'adiciona','esvazia')
+
+       
+      
+        this._mensagem = new Bind(
+            new Mensagem(),
+            this._mensagemView = new MensagemView($('#mensagemView')),
+            'texto')
     }
 
     adiciona(event){
@@ -42,7 +27,6 @@ class NegociacaoController {
         event.preventDefault();
         this._listaNegociacoes.adiciona(this._criaNegociacao());
         this._mensagem.texto = 'Negociação adicionada com sucesso!';
-        this._mensagemView.update(this._mensagem);
         this._limpaForm();
 
     }
@@ -51,7 +35,6 @@ class NegociacaoController {
         
         this._listaNegociacoes.esvazia();
         this._mensagem.texto = 'Negociações apagadas com Sucesso!';
-        this._mensagemView.update(this._mensagem);
     }
 
     _criaNegociacao(){
