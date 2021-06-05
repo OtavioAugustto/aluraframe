@@ -23,7 +23,7 @@ document.querySelector('.form').addEventListener('submit', function(event){
     tdVolume.textContent = campos[1].value * campos[2].value;
     tr.appendChild(tdVolume);
 
-    //adiciona a tar na tabela! 
+    //adiciona a tr na tabela! 
     tBody.appendChild(tr);
 
     //apagando os dados dos campos e definindo foco de preenchimento
