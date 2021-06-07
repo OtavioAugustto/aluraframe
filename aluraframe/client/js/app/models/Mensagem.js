@@ -1,19 +1,20 @@
-class Mensagem{
+class Mensagem {
 
-    constructor(texto =''){
-        this._texto = texto;
+    // DEIXOU DE RECEBER O PARÂMTRO OPCIONAL
+    constructor(texto) {
+
+        this._texto = texto || ''; // se texto for undefined, vai passar ''
     }
 
-    get texto (){
+    get texto() {
+
         return this._texto;
     }
 
-    set texto (texto){
-        return this._texto = texto;
+    set texto(texto) {
+
+        this._texto = texto;
     }
-
-    
-
 }
 
    

@@ -5,7 +5,8 @@
     <title>Negociações</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
-    
+    <!-- carregando nosso polyfill -->
+    <script src="js/app/polyfill/es6.js"></script>
 </head>
 <body class="container">
     
@@ -15,8 +16,9 @@
         
         <div class="form-group">
             <label for="data">Data</label>
-            <input type="date" id="data" class="form-control" required autofocus/>        
-        </div>    
+            <!-- alterou para input text e ainda esta com um placeholder -->
+            <input type="text" placeholder="dd/mm/aaaa" id="data" class="form-control" required autofocus/>        
+        </div>   
         
         <div class="form-group">
             <label for="quantidade">Quantidade</label>
@@ -29,8 +31,9 @@
         </div>
         
         <button class="btn btn-success" type="submit">Incluir</button>
+        <a class="btn btn-primary " type="button" href="./post.html" style="float: right;">Enviar Ao Servidor</a>
     </form>
-    
+    <br><br>
     <div class="text-center">
         <button onclick="negociacaoController.importaNegociacoes()" class="btn btn-primary text-center" type="button">
             Importar Negociações
@@ -38,9 +41,9 @@
         <button onclick="negociacaoController.apagar()" class="btn btn-danger text-center" type="button">
             Apagar
         </button>
+        <br><br>
+        <p style="float:left;"><strong>OBS:</strong> Para ordenar as negociações em ordem crescente dê um clique no cabeçalho (coluna), para inverter a ordem de outro clique!</p>
     </div> 
-    <br>
-    <br>
     
     <div id="negociacoesView"></div> <!-- div que irá receber a tabela da view JS -->
 
@@ -59,7 +62,7 @@
     <script src="js/app/services/HttpService.js"></script>
     <!-- instancia de negociacao controler -->
     <script>
-        let negociacaoController = new NegociacaoController();
+        var negociacaoController = new NegociacaoController();
     </script>
 
 </body>
